@@ -2,117 +2,103 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Web;
-using System.Web.Mvc;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Description;
 using ApiGestionStock.Models;
 
 namespace ApiGestionStock.Controllers
 {
-    public class CaissiersController : Controller
+    public class CaissiersController : ApiController
     {
         private BdStockExamContext db = new BdStockExamContext();
 
-        // GET: Caissiers
-        public ActionResult Index()
+        // GET: api/Caissiers
+        public IQueryable<Caissier> GetCaissiers()
         {
-            return View(db.Caissiers.ToList());
+            return db.Caissiers;
         }
 
-        // GET: Caissiers/Details/5
-        public ActionResult Details(int? id)
+        // GET: api/Caissiers/5
+        [ResponseType(typeof(Caissier))]
+        public IHttpActionResult GetCaissier(int id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
             Caissier caissier = db.Caissiers.Find(id);
             if (caissier == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
-            return View(caissier);
+
+            return Ok(caissier);
         }
 
-        // GET: Caissiers/Create
-        public ActionResult Create()
+        // PUT: api/Caissiers/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PutCaissier(int id, Caissier caissier)
         {
-            return View();
-        }
-
-        // POST: Caissiers/Create
-        // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCaissier,NomCaissier,PreomCaissier,TelephoneCaissier,AdresseCaissier,LoginCaissier,MotDePasseCaissier,PremierCon,Role")] Caissier caissier)
-        {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Caissiers.Add(caissier);
+                return BadRequest(ModelState);
+            }
+
+            if (id != caissier.IdCaissier)
+            {
+                return BadRequest();
+            }
+
+            db.Entry(caissier).State = EntityState.Modified;
+
+            try
+            {
                 db.SaveChanges();
-                return RedirectToAction("Index");
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!CaissierExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
 
-            return View(caissier);
+            return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // GET: Caissiers/Edit/5
-        public ActionResult Edit(int? id)
+        // POST: api/Caissiers
+        [ResponseType(typeof(Caissier))]
+        public IHttpActionResult PostCaissier(Caissier caissier)
         {
-            if (id == null)
+            if (!ModelState.IsValid)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return BadRequest(ModelState);
             }
+
+            db.Caissiers.Add(caissier);
+            db.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = caissier.IdCaissier }, caissier);
+        }
+
+        // DELETE: api/Caissiers/5
+        [ResponseType(typeof(Caissier))]
+        public IHttpActionResult DeleteCaissier(int id)
+        {
             Caissier caissier = db.Caissiers.Find(id);
             if (caissier == null)
             {
-                return HttpNotFound();
+                return NotFound();
             }
-            return View(caissier);
-        }
 
-        // POST: Caissiers/Edit/5
-        // Afin de déjouer les attaques par survalidation, activez les propriétés spécifiques auxquelles vous voulez établir une liaison. Pour 
-        // plus de détails, consultez https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCaissier,NomCaissier,PreomCaissier,TelephoneCaissier,AdresseCaissier,LoginCaissier,MotDePasseCaissier,PremierCon,Role")] Caissier caissier)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(caissier).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(caissier);
-        }
-
-        // GET: Caissiers/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Caissier caissier = db.Caissiers.Find(id);
-            if (caissier == null)
-            {
-                return HttpNotFound();
-            }
-            return View(caissier);
-        }
-
-        // POST: Caissiers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Caissier caissier = db.Caissiers.Find(id);
             db.Caissiers.Remove(caissier);
             db.SaveChanges();
-            return RedirectToAction("Index");
+
+            return Ok(caissier);
         }
 
         protected override void Dispose(bool disposing)
@@ -122,6 +108,11 @@ namespace ApiGestionStock.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private bool CaissierExists(int id)
+        {
+            return db.Caissiers.Count(e => e.IdCaissier == id) > 0;
         }
     }
 }

@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.btnAjouter = new System.Windows.Forms.Button();
-            this.txtPU = new System.Windows.Forms.TextBox();
+            this.txtPrix = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtQte = new System.Windows.Forms.TextBox();
+            this.txtQuantite = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtLibelle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dgProduit = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgProduit)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,14 +54,14 @@
             this.btnAjouter.Text = "&Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = false;
             // 
-            // txtPU
+            // txtPrix
             // 
-            this.txtPU.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPU.Location = new System.Drawing.Point(13, 200);
-            this.txtPU.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPU.Name = "txtPU";
-            this.txtPU.Size = new System.Drawing.Size(297, 27);
-            this.txtPU.TabIndex = 32;
+            this.txtPrix.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrix.Location = new System.Drawing.Point(13, 200);
+            this.txtPrix.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPrix.Name = "txtPrix";
+            this.txtPrix.Size = new System.Drawing.Size(297, 27);
+            this.txtPrix.TabIndex = 32;
             // 
             // label5
             // 
@@ -73,14 +74,14 @@
             this.label5.TabIndex = 31;
             this.label5.Text = "Prix Unitaire";
             // 
-            // txtQte
+            // txtQuantite
             // 
-            this.txtQte.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQte.Location = new System.Drawing.Point(13, 128);
-            this.txtQte.Margin = new System.Windows.Forms.Padding(4);
-            this.txtQte.Name = "txtQte";
-            this.txtQte.Size = new System.Drawing.Size(297, 27);
-            this.txtQte.TabIndex = 30;
+            this.txtQuantite.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantite.Location = new System.Drawing.Point(13, 128);
+            this.txtQuantite.Margin = new System.Windows.Forms.Padding(4);
+            this.txtQuantite.Name = "txtQuantite";
+            this.txtQuantite.Size = new System.Drawing.Size(297, 27);
+            this.txtQuantite.TabIndex = 30;
             // 
             // label4
             // 
@@ -134,17 +135,27 @@
             this.label3.Text = "Table des commandes";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 16;
+            this.listBox1.Location = new System.Drawing.Point(87, 25);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(120, 84);
+            this.listBox1.TabIndex = 36;
+            // 
             // FrmProduit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgProduit);
             this.Controls.Add(this.btnAjouter);
-            this.Controls.Add(this.txtPU);
+            this.Controls.Add(this.txtPrix);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtQte);
+            this.Controls.Add(this.txtQuantite);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtLibelle);
             this.Controls.Add(this.label2);
@@ -159,13 +170,14 @@
         #endregion
 
         private System.Windows.Forms.Button btnAjouter;
-        private System.Windows.Forms.TextBox txtPU;
+        private System.Windows.Forms.TextBox txtPrix;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtQte;
+        private System.Windows.Forms.TextBox txtQuantite;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtLibelle;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgProduit;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
