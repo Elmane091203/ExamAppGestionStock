@@ -1,0 +1,88 @@
+﻿@model ApiGestionStock.Models.Caissier
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Caissier</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreomCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreomCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelephoneCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelephoneCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdresseCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdresseCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotDePasseCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotDePasseCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PremierCon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PremierCon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

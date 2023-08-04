@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ApiGestionStock.Models.StockProduit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Produit.Libelle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QteDispo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QteVendu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MontantVente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DatePeremption)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Produit.Libelle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QteDispo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QteVendu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MontantVente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DatePeremption)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IdStockProduit }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IdStockProduit }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IdStockProduit })
+        </td>
+    </tr>
+}
+
+</table>

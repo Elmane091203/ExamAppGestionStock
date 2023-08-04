@@ -1,0 +1,58 @@
+﻿@model ApiGestionStock.Models.StockProduit
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>StockProduit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Produit.Libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Produit.Libelle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QteDispo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QteDispo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QteVendu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QteVendu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontantVente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontantVente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DatePeremption)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DatePeremption)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdStockProduit }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,82 @@
+﻿@model ApiGestionStock.Models.Caissier
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Caissier</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreomCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreomCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TelephoneCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TelephoneCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdresseCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdresseCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LoginCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LoginCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MotDePasseCaissier)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MotDePasseCaissier)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PremierCon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PremierCon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdCaissier }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
